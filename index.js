@@ -1,6 +1,5 @@
 const micro = require('micro')
 require('dotenv').config()
-const firebase = require('firebase')
 const admin = require("firebase-admin")
 const firebase_config = require('./config/firebase')
 
