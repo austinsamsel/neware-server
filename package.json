@@ -4,11 +4,12 @@
   "description": "server layer for neware",
   "main": "index.js",
   "scripts": {
+    "start": "node --harmony-async-await index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "hightops",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.14.1"
+    "micro": "^6.2.1"
   }
 }
