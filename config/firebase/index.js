@@ -9,17 +9,7 @@ admin.initializeApp({
   credential: admin.credential.cert({
     projectId: process.env.FIREBASE_ID,
     clientEmail: process.env.FIREBASE_EMAIL,
-    //privateKey: fb_replace
     privateKey: firebase_key
   }),
   databaseURL: process.env.FIREBASE_URL
 });
-//
-
-// const serviceAccount = require('./config.json');
-//
-// admin.initializeApp({
-//   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: 'https://anywhere-32729.firebaseio.com'
-// });
-//
