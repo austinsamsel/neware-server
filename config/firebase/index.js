@@ -1,4 +1,4 @@
-const admin = require('firebase-admin');
+const admin = require('firebase-admin')
 
 admin.initializeApp({
   credential: admin.credential.cert({
@@ -8,3 +8,4 @@ admin.initializeApp({
   }),
   databaseURL: process.env.FIREBASE_URL
 });
+

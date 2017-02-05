@@ -1,6 +1,6 @@
 const micro = require('micro')
 require('dotenv').config()
-const admin = require("firebase-admin")
+const admin = require('firebase-admin')
 const firebase_config = require('./config/firebase')
 
 const server = micro(async (req, res) => {
@@ -13,8 +13,12 @@ server.listen(3000)
 
 console.log('hi')
 
-var db = admin.database();
-var ref = db.ref("testttt");
+
+
+//console.log(process.env.FIREBASE_KEY.replace(/\\n/g, '\n'))
+
+// var db = admin.database();
+// var ref = db.ref("testttt");
 
 // var usersRef = ref.child("test_users");
 // usersRef.set({
