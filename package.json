@@ -12,8 +12,10 @@
   "author": "hightops",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^4.0.0",
     "firebase-admin": "^4.1.0",
     "micro": "^6.2.1"
+  },
+  "devDependencies": {
+    "dotenv": "^4.0.0"
   }
 }

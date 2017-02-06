@@ -13,8 +13,6 @@ server.listen(3000)
 
 console.log('hi')
 
-//console.log(process.env.FIREBASE_KEY.replace(/\\n/g, '\n'))
-
 var db = admin.database();
 var ref = db.ref("testttt");
 
