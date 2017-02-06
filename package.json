@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node --harmony-async-await index",
-    "deploy": "now -e GREETING=@greeting FIREBASE_ID=@firebase_id FIREBASE_EMAIL=@firebase_email FIREBASE_KEY=@firebase_key FIREBASE_URL=@firebase_url",
+    "deploy": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_KEY=@firebase_key -e FIREBASE_URL=@firebase_url",
+    "ship": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_URL=@firebase_url",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "hightops",

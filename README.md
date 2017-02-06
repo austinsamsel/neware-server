@@ -35,7 +35,7 @@ To deploy secrets, we add them to Now like this:
 
 Then in the package.json, we reference the secrets while deploying. When the environment is built on Now then the secret values are updated.
 
-    "deploy": "now -e GREETING=@greeting NAME=@name"
+    "deploy": "now -e GREETING=@greeting -e NAME=@name"
 
 Run `now secret` for help.
 
