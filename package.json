@@ -4,7 +4,8 @@
   "description": "server layer for neware",
   "main": "index.js",
   "scripts": {
-    "start": "node --harmony-async-await index",
+    "start": "nodemon -w index.js --exec \"babel-node index.js --presets es2015,stage-0\"",
+    "old-start": "node --harmony-async-await index",
     "deploy": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_KEY=@firebase_key -e FIREBASE_URL=@firebase_url",
     "ship": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_URL=@firebase_url",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -19,6 +20,7 @@
     "micro": "^6.2.1"
   },
   "devDependencies": {
-    "dotenv": "^4.0.0"
+    "dotenv": "^4.0.0",
+    "nodemon": "^1.11.0"
   }
 }
