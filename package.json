@@ -8,7 +8,9 @@
     "old-start": "node --harmony-async-await index",
     "deploy": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_KEY=@firebase_key -e FIREBASE_URL=@firebase_url",
     "ship": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_URL=@firebase_url",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel src -s -D -d dist --presets es2015,stage-0",
+    "dist": "node dist"
   },
   "author": "hightops",
   "license": "ISC",
