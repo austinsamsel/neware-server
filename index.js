@@ -1,3 +1,4 @@
+require('babel-core/register'); 
 const micro = require('micro')
 require('dotenv').config()
 const admin = require('firebase-admin')
