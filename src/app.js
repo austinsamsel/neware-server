@@ -13,17 +13,17 @@ server.listen(3000)
 
 console.log('hi')
 
-var db = admin.database();
-var ref = db.ref("testttt");
+// var db = admin.database();
+// var ref = db.ref("testttt");
 
-var usersRef = ref.child("test_users");
-usersRef.set({
-  alanisawesome: {
-      date_of_birth: "June 23, 1912",
-      full_name: "Alan Turing"
-    },
-  gracehop: {
-      date_of_birth: "December 9, 1906",
-      full_name: "Grace Hopper"
-    }
-});
+// var usersRef = ref.child("test_users");
+// usersRef.set({
+//   alanisawesome: {
+//       date_of_birth: "June 23, 1912",
+//       full_name: "Alan Turing"
+//     },
+//   gracehop: {
+//       date_of_birth: "December 9, 1906",
+//       full_name: "Grace Hopper"
+//     }
+// });
