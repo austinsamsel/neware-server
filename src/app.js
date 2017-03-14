@@ -1,10 +1,10 @@
-import admin from 'firebase-admin'
+// import admin from 'firebase-admin'
 import express from 'express';
 const app = express();
 require('dotenv').config()   // helps parse config
 require('./config/firebase') // firebase config
 // firebase service worker: clean old posts
-const fb_clean = require('./fb_clean');
+const fb_clean = require('./modules/fb_clean');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -28,15 +28,4 @@ app.listen(app.get('port'), function() {
   startup();
 });
 
-// TEST: firebase connection
-const usersRef = admin.database().ref('test_users');
-usersRef.set({
-  alanisawesome: {
-      date_of_birth: 'June 23, 1912',
-      full_name: 'Alan Turing'
-    },
-  gracehop: {
-      date_of_birth: 'December 9, 1906',
-      full_name: 'Grace Hopper'
-    }
-});
+

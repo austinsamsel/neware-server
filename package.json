@@ -7,8 +7,9 @@
     "start": "node ./index.js --exec \"babel-node ./index.js --presets es2015,stage-0\"",
     "dev": "nodemon -w ./src --exec \"babel-node ./index.js --presets es2015,stage-0\"",
     "deploy": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_KEY=@firebase_key -e FIREBASE_URL=@firebase_url",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ./**/**.js"
+    "lint": "eslint ./**/**.js",
+    "test": "tape -r babel-register './**/*.spec.js' | tap-spec",
+    "test-watch": "tape-watch -r babel-register ./**/*.spec.js --silent | tap-spec"
   },
   "author": "hightops",
   "license": "ISC",
@@ -22,8 +23,13 @@
     "firebase-admin": "^4.1.0"
   },
   "devDependencies": {
+    "blue-tape": "^1.0.0",
     "dotenv": "^4.0.0",
     "eslint": "^3.17.1",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.6.3",
+    "tape-run": "^3.0.0",
+    "tape-watch": "^2.3.0"
   }
 }
