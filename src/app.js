@@ -19,7 +19,7 @@ app.get("/", function (request, response) {
 });
 
 // To run on server startup
-function startup(){
+const startup = () => {
   // initialize firebase
   // fbClean.init()
   // start firebase clean up.
