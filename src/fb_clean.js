@@ -1,31 +1,20 @@
-const admin = require('firebase-admin')
+import admin from 'firebase-admin'
 
 const db = admin.database();
-const ref = db.ref('channel');
-const cutoff = Date.now() - (1000 * 60 * 60 * 24); // 24 hr old.
-// 24 hours:  1000 * 60 * 60 * 24
-// 5 minutes: 1000 * 60 * 5
+const one_day = 1000 * 60 * 60 * 24;
+//const five_min  = 1000 * 60 * 5 // for testing
+//const one_min  = 1000 * 60 * 1  // for testing
+const cutoff = Date.now() - (one_day);
 
-const clean = () => {
-  console.log('cleaning')
-  ref.on("child_added", function(snapshot) {
-    var channelName = snapshot.key;
-    snapshot.forEach(function(childSnap) {
-      var key = childSnap.key;
-      if(childSnap.val().createdAt < cutoff){
-        db.ref('channel/' + channelName + '/' + key).remove();
-      }
-    });
-  });
-  
-  // delete old posts from redux version as well.
-  var refNotes = db.ref('notes');
-  refNotes.on("child_added", function(snapshot) {
-    var channelName = snapshot.key;
-    snapshot.forEach(function(childSnap) {
-      var key = childSnap.key;
-      if(childSnap.val().createdAt < cutoff){
-        db.ref('notes/' + channelName + '/' + key).remove();
+const clean = (notes) => {
+  // delete old posts
+  const ref_notes = db.ref(`${notes}`);
+  ref_notes.on("child_added", (snapshot) => {
+    const channel_name = snapshot.key;
+    snapshot.forEach( (child_snap) => {
+      const key_id = child_snap.key;
+      if(child_snap.val().createdAt < cutoff){
+        db.ref(`${notes}/${channel_name}/${key_id}`).remove();
       }
     });
   });

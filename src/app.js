@@ -1,18 +1,15 @@
-// init project
-var express = require('express');
-var app = express();
-// config
-require('dotenv').config()
-// firebase
-const admin = require('firebase-admin')
-const firebase_config = require('./config/firebase')
+import admin from 'firebase-admin'
+import express from 'express';
+const app = express();
+require('dotenv').config()   // helps parse config
+require('./config/firebase') // firebase config
 // firebase service worker: clean old posts
-var fb_clean = require('./fb_clean');
+const fb_clean = require('./fb_clean');
 
 app.set('port', (process.env.PORT || 5000));
 
 // http://expressjs.com/en/starter/basic-routing.html
-app.get("/", function (request, response) {
+app.get('/', function (request, response) {
   const greeting = process.env.GREETING;
   response.writeHead(200)
   response.end(greeting)
@@ -21,7 +18,7 @@ app.get("/", function (request, response) {
 // To run on server startup
 const startup = () => {
   //start firebase clean up.
-  fb_clean.clean();   
+  fb_clean.clean('notes');   
 }
 // listen for requests :)
 // we'll ping every 24 hours.
@@ -31,21 +28,15 @@ app.listen(app.get('port'), function() {
   startup();
 });
 
-// server.listen(3000)
-
-console.log('hiyooooooo')
-
-// var db = admin.database();
-// var ref = db.ref("testttt");
-
-var usersRef = admin.database().ref("test_users");
+// TEST: firebase connection
+const usersRef = admin.database().ref('test_users');
 usersRef.set({
   alanisawesome: {
-      date_of_birth: "June 23, 1912",
-      full_name: "Alan Turing"
+      date_of_birth: 'June 23, 1912',
+      full_name: 'Alan Turing'
     },
   gracehop: {
-      date_of_birth: "December 9, 1906",
-      full_name: "Grace Hopper"
+      date_of_birth: 'December 9, 1906',
+      full_name: 'Grace Hopper'
     }
 });
