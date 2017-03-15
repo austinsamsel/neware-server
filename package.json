@@ -4,7 +4,8 @@
   "description": "server layer for neware",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -w ./src --exec \"babel-node ./index.js --presets es2015,stage-0\"",
+    "start": "babel-node ./index.js --presets es2015,stage-0",
+    "dev": "nodemon -w ./src --exec \"babel-node ./index.js --presets es2015,stage-0\"",
     "deploy": "now -e GREETING=@greeting -e FIREBASE_ID=@firebase_id -e FIREBASE_EMAIL=@firebase_email -e FIREBASE_KEY=@firebase_key -e FIREBASE_URL=@firebase_url",
     "lint": "eslint ./**/**.js",
     "test": "tape -r babel-register './**/*.spec.js' | tap-spec",
