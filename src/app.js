@@ -2,7 +2,7 @@
 import express from 'express';
 const app = express();
 require('dotenv').config()   // helps parse config
-require('./config/firebase') // firebase config
+require('./config/firebase/live_server') // firebase config
 // firebase service worker: clean old posts
 const fb_clean = require('./modules/fb_clean');
 

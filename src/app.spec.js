@@ -2,7 +2,7 @@ const test = require('blue-tape');
 import admin from 'firebase-admin'
 import util from './test/helpers'
 require('dotenv').config()   // helps parse config
-require('./config/firebase') // firebase config
+require('./config/firebase/test_server') // firebase config
 
 const db_test_ref = admin.database().ref('___test_read_write')
 

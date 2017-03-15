@@ -2,7 +2,7 @@ const test = require('blue-tape');
 import admin from 'firebase-admin'
 import util from '../test/helpers'
 require('dotenv').config()   // helps parse config
-require('../config/firebase') // firebase config
+require('../config/firebase/test_server') // firebase config
 import fb_clean from './fb_clean.js'
 
 const test_ref = '___test_notes'
