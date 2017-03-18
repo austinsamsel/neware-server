@@ -14,6 +14,7 @@ app.get('/', function (request, response) {
   response.end(greeting)
   // run firebase cleaner
   fb_clean.clean('notes'); 
+  // TODO: test on visit url, this function runs.
 });
 
 app.listen(app.get('port'), function() {
