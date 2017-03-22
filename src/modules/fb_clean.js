@@ -4,6 +4,7 @@ const db = admin.database();
 const one_day = 1000 * 60 * 60 * 24;
 //const five_min  = 1000 * 60 * 5 // for testing
 //const one_min  = 1000 * 60 * 1  // for testing
+
 const cutoff = Date.now() - (one_day);
 // TODO: tests should say we are measuring one day.
 
