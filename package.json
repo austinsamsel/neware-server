@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "server layer for neware",
   "main": "index.js",
+  "engines": {
+    "node": "7.6.0"
+  },
   "scripts": {
     "start": "babel-node ./index.js --presets es2015,stage-0",
     "dev": "nodemon -w ./src --exec \"babel-node ./index.js --presets es2015,stage-0\"",
