@@ -21,26 +21,26 @@ const clean = (notes) => {
     });
   })
 
-  admin.database().ref('notes').update({
-    channelname01: {
-      somecrazyid1: {
-        createdAt: 0,
-        text: 'hi'
-      }
-    },
-    channelname02: {
-      somecrazyid2: {
-        createdAt: 1,
-        text: 'hi'
-      }
-    },
-    channelname03: {
-      somecrazyid3: {
-        createdAt: 1,
-        text: 'hi'
-      }
-    },
-  });
+  // admin.database().ref('notes').update({
+  //   channelname01: {
+  //     somecrazyid1: {
+  //       createdAt: 0,
+  //       text: 'hi'
+  //     }
+  //   },
+  //   channelname02: {
+  //     somecrazyid2: {
+  //       createdAt: 1,
+  //       text: 'hi'
+  //     }
+  //   },
+  //   channelname03: {
+  //     somecrazyid3: {
+  //       createdAt: 1,
+  //       text: 'hi'
+  //     }
+  //   },
+  // });
 
 }
 

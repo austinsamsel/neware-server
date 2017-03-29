@@ -6,6 +6,8 @@ require('./config/firebase/live_server') // firebase config
 // firebase service worker to clean old posts
 const fb_clean = require('./modules/fb_clean');
 
+require('now-logs')(process.env.LOGS_SECRET)
+
 app.set('port', (process.env.PORT || 5000));
 
 app.get('/', function (request, response) {
@@ -15,6 +17,7 @@ app.get('/', function (request, response) {
   // run firebase cleaner
   fb_clean.clean('notes'); 
   // TODO: test on visit url, this function runs.
+  console.log('hit browser')
 });
 
 app.listen(app.get('port'), function() {
