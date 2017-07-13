@@ -4,7 +4,7 @@
   "description": "server layer for neware",
   "main": "index.js",
   "engines": {
-    "node": "7.6.0"
+    "node": "8.1.4"
   },
   "scripts": {
     "start": "babel-node ./index.js --presets es2015,stage-0",
