@@ -19,20 +19,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 app.set('port', process.env.PORT || 5000)
 
-// EXTRAS....
-// app.get('/', function(request, response) {
-//   const greeting = process.env.GREETING
-//   response.writeHead(200)
-//   // run firebase cleaner
-//   console.log('hit browser')
-
-//   fb_clean.clean('notes')
-//   // TODO: test on visit url, this function runs.
-//   response.json({ message: 'welcome to the neware service!' })
-
-//   response.end(greeting)
-// })
-
 // SET UP ROUTES
 const router = express.Router()
 root_route(app, router)
