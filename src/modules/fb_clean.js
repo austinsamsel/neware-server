@@ -1,4 +1,5 @@
 import admin from 'firebase-admin'
+import winston from 'winston'
 
 const db = admin.database()
 const one_day = 1000 * 60 * 60 * 24
@@ -10,12 +11,20 @@ const cutoff = Date.now() - one_day
 
 const clean = notes => {
   // delete old posts
+
+  winston.info('clean() invoked')
+
   const ref_notes = db.ref(`${notes}`)
   ref_notes.on('child_added', snapshot => {
     const channel_name = snapshot.key
+
+    winston.info('channel name: ', channel_name)
+
     snapshot.forEach(child_snap => {
       const key_id = child_snap.key
       if (child_snap.val().createdAt < cutoff) {
+        winston.info('removing: ', `${notes}/${channel_name}/${key_id}`)
+
         db.ref(`${notes}/${channel_name}/${key_id}`).remove()
       }
     })
