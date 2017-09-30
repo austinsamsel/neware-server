@@ -15,9 +15,10 @@ app.get('/', function(request, response) {
   response.writeHead(200)
   response.end(greeting)
   // run firebase cleaner
+  console.log('hit browser')
+
   fb_clean.clean('notes')
   // TODO: test on visit url, this function runs.
-  console.log('hit browser')
 })
 
 app.listen(app.get('port'), function() {

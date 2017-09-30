@@ -10,12 +10,17 @@ const cutoff = Date.now() - one_day
 
 const clean = notes => {
   // delete old posts
+
+  console.log('invoked notes()')
+
   const ref_notes = db.ref(`${notes}`)
   ref_notes.on('child_added', snapshot => {
     const channel_name = snapshot.key
     snapshot.forEach(child_snap => {
       const key_id = child_snap.key
       if (child_snap.val().createdAt < cutoff) {
+        console.log('deleting: ', channel_name, key_id)
+
         db.ref(`${notes}/${channel_name}/${key_id}`).remove()
       }
     })
