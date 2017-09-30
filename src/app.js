@@ -1,28 +1,34 @@
-// import admin from 'firebase-admin'
+// SERVER
 import express from 'express'
+const cors = require('cors')
 const app = express()
-require('dotenv').config() // helps parse config
-require('./config/firebase/live_server') // firebase config
-// firebase service worker to clean old posts
-const fb_clean = require('./modules/fb_clean')
+const bodyParser = require('body-parser')
 
+// LOGS
 require('now-logs')(process.env.LOGS_SECRET)
 
+// IMPORT ROUTES
+import root_route from './routes/root.js'
+
+// FIREBASE
+const fb_clean = require('./modules/fb_clean.js')
+
+// SET UP APP
+app.use(cors())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.set('port', process.env.PORT || 5000)
 
-app.get('/', function(request, response) {
-  const greeting = process.env.GREETING
-  response.writeHead(200)
-  response.end(greeting)
-  // run firebase cleaner
-  console.log('hit browser')
+// SET UP ROUTES
+const router = express.Router()
+root_route(app, router)
 
-  fb_clean.clean('notes')
-  // TODO: test on visit url, this function runs.
-})
+// REGISTER OUR ROUTES
+app.use('/', router)
 
+// START THE SERVER
 app.listen(app.get('port'), function() {
-  console.log('Your app is listening on port ' + app.get('port'))
+  console.log('Magic happens on port ' + app.get('port'))
   // run firebase cleaner
   fb_clean.clean('notes')
 })
