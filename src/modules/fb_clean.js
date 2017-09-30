@@ -12,22 +12,25 @@ const cutoff = Date.now() - one_day
 const clean = notes => {
   // delete old posts
 
-  winston.info('clean() invoked')
+  winston.info('invoked notes()')
 
   const ref_notes = db.ref(`${notes}`)
   ref_notes.on('child_added', snapshot => {
     const channel_name = snapshot.key
-
-    winston.info('channel name: ', channel_name)
-
+    winston.info('found: ', channel_name)
+    const count_total = []
+    const count_deleted = []
     snapshot.forEach(child_snap => {
       const key_id = child_snap.key
+      count_total.push(child_snap)
       if (child_snap.val().createdAt < cutoff) {
-        winston.info('removing: ', `${notes}/${channel_name}/${key_id}`)
-
+        winston.info('deleting: ', channel_name, key_id)
+        count_deleted.push(child_snap)
         db.ref(`${notes}/${channel_name}/${key_id}`).remove()
       }
     })
+    winston.info('total scanned: ', count_total.length)
+    winston.info('total deleted: ', count_deleted.length)
   })
 
   // admin.database().ref('notes').update({
