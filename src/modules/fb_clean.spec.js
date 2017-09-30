@@ -2,8 +2,32 @@ const test = require('blue-tape')
 import admin from 'firebase-admin'
 import util from '../test/helpers'
 require('dotenv').config() // helps parse config
-require('../config/firebase/test_server') // firebase config
+require('../config/firebase/live_server') // firebase config
 import fb_clean from './fb_clean.js'
+
+// import moment from 'moment'
+
+// const post_day_old = channel => {
+//   db.ref(`notes/${channel}`).set({
+//     key: {
+//       createdAt: moment(new Date()).subtract(2, "days").valueOf(),
+//       encrypted: false,
+//       plaintext: false,
+//       text: 'old post'
+//     }
+//   });
+// }
+
+// const post_fresh = channel => {
+//   db.ref(`notes/${channel}`).set({
+//     key: {
+//       createdAt: moment(new Date()).subtract(0, "days").valueOf(),
+//       encrypted: false,
+//       plaintext: false,
+//       text: 'fresh post'
+//     }
+//   });
+// }
 
 const test_ref = '___test_notes'
 const db_test_ref = admin.database().ref(test_ref)
@@ -42,7 +66,6 @@ const read_snapshot = () => {
 
 test('delete posts older than a day', t => {
   create_note(two_day_old).then(() => {
-    console.log('done')
     fb_clean.clean(test_ref).then(() => {
       read_snapshot()
         .then(data => {
