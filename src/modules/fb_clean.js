@@ -1,6 +1,10 @@
 import admin from 'firebase-admin'
 import winston from 'winston'
 
+// CONFIGURATION
+require('dotenv').config() // helps parse config
+require('../config/firebase/live_server') // firebase config
+
 const db = admin.database()
 const one_day = 1000 * 60 * 60 * 24
 //const five_min  = 1000 * 60 * 5 // for testing
