@@ -15,7 +15,7 @@ module.exports = function(app, router) {
 
     // write greeting
     const greeting = process.env.GREETING
-    res.writeHead(200)
+    // res.writeHead(200)
     res.end(greeting)
   })
 }
