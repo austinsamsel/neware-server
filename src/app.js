@@ -5,7 +5,7 @@ const app = express()
 const bodyParser = require('body-parser')
 
 // LOGS
-require('now-logs')(process.env.LOGS_SECRET)
+// require('now-logs')(process.env.LOGS_SECRET)
 
 // IMPORT ROUTES
 import root_route from './routes/root.js'
