@@ -1,5 +1,6 @@
 import admin from 'firebase-admin'
 import winston from 'winston'
+import moment from 'moment'
 
 // CONFIGURATION
 require('dotenv').config() // helps parse config
@@ -27,8 +28,10 @@ const clean = notes => {
 
     snapshot.forEach(child_snap => {
       const key_id = child_snap.key
-      count_total.push(child_snap.val().createdAt)
-      if (child_snap.val().createdAt < cutoff) {
+      const createdAt = child_snap.val().createdAt
+      count_total.push(createdAt)
+
+      if (moment(createdAt).add(1, 'days') > moment(new Date())) {
         winston.info('deleting: ', channel_name, key_id)
         count_deleted.push(child_snap)
         console.log(`${notes}/${channel_name}/${key_id}`)
